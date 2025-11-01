@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- JUDUL BARU -->
+    <title>Linimasa & Kuis: Sejarah Kesultanan Cirebon</title>
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat font Libre Baskerville -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <!-- Memuat html2canvas untuk fitur unduh hasil -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        /* Mengatur font default dan scroll-behavior */
+        body {
+            font-family: 'Libre Baskerville', serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Styling tambahan untuk kuis */
+        .quiz-option {
+            transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        }
+        .quiz-option.selected {
+            background-color: #fef3c7; /* amber-100 */
+            border-color: #f59e0b; /* amber-500 */
+        }
+        .quiz-option:hover {
+            background-color: #fefce8; /* amber-50 */
+        }
+
+        /* Styling untuk kartu linimasa yang bisa diklik */
+        .timeline-card {
+            cursor: pointer;
+        }
+        /* Efek hover pada kartu linimasa */
+        .timeline-card > div.ml-8:hover > div.shadow-lg {
+            /* Menerapkan shadow-xl dan ring amber-500 saat di-hover */
+            --tw-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+            --tw-ring-color: #f59e0b; /* amber-500 */
+            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+            --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+            transform: translateY(-2px);
+            transition: all 0.2s ease-out;
+        }
+        
+        /* Styling untuk konten di dalam modal rincian */
+        .prose p {
+            margin-bottom: 1.25em; /* Jarak antar paragraf */
+            line-height: 1.7; /* Keterbacaan yang lebih baik */
+        }
+    </style>
+</head>
+<body class="bg-amber-50 text-gray-900">
+
+    <!-- Header (BARU) -->
+    <header class="text-center py-12 md:py-16 px-4 bg-amber-100 shadow-md">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3">Sejarah Kesultanan Cirebon</h1>
+        <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+            Sebuah linimasa novel sejarah: dari Caruban Larang, era emas Sunan Gunung Jati, hingga terbelahnya takhta.
+        </p>
+    </header>
+
+    <!-- Kontainer Linimasa Utama (BARU) -->
+    <main class="container mx-auto max-w-4xl p-4 md:p-8">
+        
+        <div class="relative border-l-4 border-amber-400 ml-6 md:ml-12 pt-4" id="timelineWrapper">
+
+            <!-- PROLOG (BARU) -->
+            <div class="mb-12 relative timeline-card" data-target="prolog">
+                <div class="absolute -left-[1.45rem] top-1 w-6 h-6 bg-amber-50 border-4 border-gray-500 rounded-full"></div>
+                <div class="ml-8 md:ml-12 p-6 bg-amber-50 rounded-lg shadow-lg">
+                    <span class="text-sm font-semibold text-gray-500 uppercase">PROLOG</span>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">c. 1300-1400: Tanah Para Pedagang</h3>
+                    <p class="text-gray-700">Di pesisir utara, pelabuhan-pelabuhan kecil seperti Singapura (Mertasinga) dan Pasambangan ramai oleh pedagang dari Arab, Tiongkok, dan Gujarat. Ini adalah tanah di bawah kuasa Kerajaan Sunda Pajajaran.</p>
+                </div>
+            </div>
+
+            <!-- BABAK I (BARU) -->
+            <div class="mb-12 relative timeline-card" data-target="babak1">
+                <div class="absolute -left-[1.45rem] top-1 w-6 h-6 bg-amber-50 border-4 border-blue-400 rounded-full"></div>
+                <div class="ml-8 md:ml-12">
+                    <span class="text-sm font-semibold text-blue-600 ml-6 md:ml-0">BABAK I: LAHIRNYA CARUBAN LARANG</span>
+                    <div class="p-6 bg-blue-50 rounded-lg shadow-lg mt-2">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">c. 1445: Sang Pangeran Pembuka Hutan</h3>
+                        <p class="text-gray-700">Pangeran Walangsungsang, putra Prabu Siliwangi dari Pajajaran, meninggalkan istana. Bersama istrinya, Nyi Indang Geulis, ia membabat hutan di pesisir. Tempat itu dinamai "Caruban" (Campuran).</p>
+                    </div>
+                    <div class="p-6 bg-blue-50 rounded-lg shadow-lg mt-4">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">c. 1447: Menjadi Haji & Kuwu</h3>
+                        <p class="text-gray-700">Setelah berguru Islam pada Syekh Dzatuk Kahfi dan menunaikan haji, ia berganti nama menjadi Haji Abdullah Iman. Ia diangkat menjadi Kuwu (Kepala Desa) Caruban, yang kini dikenal sebagai Cirebon.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BABAK II (BARU) -->
+            <div class="mb-12 relative timeline-card" data-target="babak2">
+                <div class="absolute -left-[1.45rem] top-1 w-6 h-6 bg-amber-50 border-4 border-green-400 rounded-full"></div>
+                <div class="ml-8 md:ml-12">
+                    <span class="text-sm font-semibold text-green-600 ml-6 md:ml-0">BABAK II: SANG WALI & SANG RAJA</span>
+                    <div class="p-6 bg-green-50 rounded-lg shadow-lg mt-2">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">c. 1479: Era Sunan Gunung Jati</h3>
+                        <p class="text-gray-700">Syarif Hidayatullah, keponakan Pangeran Cakrabuana, tiba dari Mesir. Ia menikahi Nyi Ratu Pakungwati (putri Cakrabuana) dan menggantikan pamannya sebagai penguasa Cirebon.</p>
+                    </div>
+                    <div class="p-6 bg-green-50 rounded-lg shadow-lg mt-4">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">1482: Proklamasi Kemerdekaan</h3>
+                        <p class="text-gray-700">Sunan Gunung Jati berhenti mengirim upeti (terasi) ke Pajajaran. Cirebon memproklamasikan diri sebagai Kesultanan merdeka. Era Emas Cirebon sebagai pusat dakwah Wali Songo dimulai.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BABAK III (BARU) -->
+            <div class="mb-12 relative timeline-card" data-target="babak3">
+                <div class="absolute -left-[1.45rem] top-1 w-6 h-6 bg-amber-50 border-4 border-purple-400 rounded-full"></div>
+                <div class="ml-8 md:ml-12">
+                    <span class="text-sm font-semibold text-purple-600 ml-6 md:ml-0">BABAK III: ERA PASCA WALI</span>
+                    <div class="p-6 bg-purple-50 rounded-lg shadow-lg mt-2">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">1568: Wafatnya Sang Wali</h3>
+                        <p class="text-gray-700">Sunan Gunung Jati wafat. Takhta dipegang oleh Pangeran Mas, yang kemudian dikenal sebagai Panembahan Ratu I (cucu SGJ). Ini adalah era konsolidasi dan perdamaian.</p>
+                    </div>
+                    <div class="p-6 bg-purple-50 rounded-lg shadow-lg mt-4">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">c. 1600: Menjaga Keseimbangan</h3>
+                        <p class="text-gray-700">Di bawah Panembahan Ratu I, Cirebon menjadi negara mandiri yang disegani, menjalin diplomasi dengan Banten dan Mataram yang sedang naik daun di bawah Panembahan Senopati.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BABAK IV (BARU) -->
+            <div class="mb-12 relative timeline-card" data-target="babak4">
+                <div class="absolute -left-[1.45rem] top-1 w-6 h-6 bg-amber-50 border-4 border-orange-400 rounded-full"></div>
+                <div class="ml-8 md:ml-12">
+                    <span class="text-sm font-semibold text-orange-600 ml-6 md:ml-0">BABAK IV: DI BAWAH BAYANG-BAYANG MATARAM</span>
+                    <div class="p-6 bg-orange-100 rounded-lg shadow-lg mt-2">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">c. 1636: Puncak Kebudayaan</h3>
+                        <p class="text-gray-700">Pangeran Girilaya (Panembahan Ratu II) naik takhta. Ini adalah puncak seni budaya Cirebon, ditandai dengan penciptaan Kereta Singa Barong yang melambangkan sintesis budaya.</p>
+                    </div>
+                    <div class="p-6 bg-orange-100 rounded-lg shadow-lg mt-4">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">c. 1649: Vassal Mataram</h3>
+                        <p class="text-gray-700">Sultan Agung dari Mataram, yang telah menguasai Jawa, memaksa Cirebon menjadi vassal (bawahan). Meskipun otonom, Cirebon kini berada di bawah hegemoni Mataram.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BABAK V (BARU) -->
+            <div class="mb-12 relative timeline-card" data-target="babak5">
+                <div class="absolute -left-[1.45rem] top-1 w-6 h-6 bg-amber-50 border-4 border-red-400 rounded-full"></div>
+                <div class="ml-8 md:ml-12">
+                    <span class="text-sm font-semibold text-red-600 ml-6 md:ml-0">BABAK V: TRAGEDI DAN KEKOSONGAN</span>
+                    <div class="p-6 bg-red-50 rounded-lg shadow-lg mt-2">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">1677: Tragedi Girilaya</h3>
+                        <p class="text-gray-700">Pangeran Girilaya diundang ke Mataram oleh Amangkurat I (putra Sultan Agung) dan tidak pernah diizinkan pulang (disandera). Ia wafat di Mataram, meninggalkan kekosongan takhta di Cirebon.</p>
+                    </div>
+                    <div class="p-6 bg-red-50 rounded-lg shadow-lg mt-4">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">1677: Intervensi Banten & VOC</h3>
+                        <p class="text-gray-700">Di tengah Pemberontakan Trunojoyo, Sultan Ageng Tirtayasa dari Banten (sekutu Trunojoyo) membawa pulang dua putra Girilaya yang juga disandera Mataram. VOC (Kumpeni) melihat ini sebagai peluang.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BABAK VI (BARU) -->
+            <div class="mb-12 relative timeline-card" data-target="babak6">
+                <div class="absolute -left-[1.45rem] top-1 w-6 h-6 bg-amber-50 border-4 border-gray-900 rounded-full"></div>
+                <div class="ml-8 md:ml-12">
+                    <span class="text-sm font-semibold text-gray-900 ml-6 md:ml-0">BABAK VI: PERJANJIAN & PERPECAHAN</span>
+                    <div class="p-6 bg-gray-200 rounded-lg shadow-lg mt-2">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">1681: Perjanjian dengan VOC</h3>
+                        <p class="text-gray-700">VOC bertindak sebagai "pelindung" kedua pangeran Cirebon dari ancaman Banten dan Mataram. Sebagai imbalannya, VOC mendapat hak monopoli dagang (lada, candu) di Cirebon.</p>
+                    </div>
+                    <div class="p-6 bg-gray-200 rounded-lg shadow-lg mt-4">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">1681 - 1705: Terbelahnya Takhta</h3>
+                        <p class="text-gray-700">VOC membagi kekuasaan Cirebon menjadi dua: 1. Sultan Sepuh (Kasepuhan) dan 2. Sultan Anom (Kanoman). Ini adalah awal dari fragmentasi yang berlanjut dengan lahirnya Kacirebonan dan Kaprabonan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EPILOG (BARU) -->
+            <div class="mb-12 relative timeline-card" data-target="epilog">
+                <div class="absolute -left-[1.45rem] top-1 w-6 h-6 bg-amber-50 border-4 border-gray-500 rounded-full"></div>
+                <div class="ml-8 md:ml-12 p-6 bg-amber-50 rounded-lg shadow-lg">
+                    <span class="text-sm font-semibold text-gray-500 uppercase">EPILOG</span>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Warisan Empat Takhta</h3>
+                    <p class="text-gray-700">Kedaulatan politik Cirebon berakhir, kini di bawah kendali kolonial. Namun, warisannya sebagai pusat budaya, seni (Batik, Topeng), dan sintesis (Jawa-Sunda-Tionghoa-Arab) tetap hidup di empat keraton: Kasepuhan, Kanoman, Kacirebonan, dan Kaprabonan.</p>
+                </div>
+            </div>
+        
+        </div> <!-- Penutup timelineWrapper -->
+
+    </main>
+
+    <!-- Bagian Kuis (UPDATE) -->
+    <section class="container mx-auto max-w-4xl p-4 md:p-8 text-center">
+        <div class="bg-white p-8 rounded-lg shadow-xl border-2 border-amber-300">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Uji Pemahaman Anda</h2>
+            <p class="text-lg text-gray-700 mb-6">Setelah menelusuri linimasa, buktikan pengetahuan Anda tentang Sejarah Kesultanan Cirebon. Kuis ini terdiri dari 20 soal HOTS dan akan berjalan dalam mode layar penuh.</p>
+            <button id="startQuizBtn" class="w-full md:w-auto bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-10 rounded-lg shadow-lg transition-transform transform hover:scale-105 text-xl">
+                Mulai Kuis Sekarang
+            </button>
+        </div>
+    </section>
+
+    <!-- Modal: Info Pengguna (Tetap) -->
+    <div id="userInfoModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50">
+        <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6 text-center text-gray-900">Masukkan Data Diri</h2>
+            <form id="userInfoForm">
+                <div class="mb-4">
+                    <label for="userName" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap:</label>
+                    <input type="text" id="userName" name="userName" class="w-full p-3 border border-gray-300 rounded-lg" required>
+                </div>
+                <div class="mb-6">
+                    <label for="userClass" class="block text-sm font-medium text-gray-700 mb-1">Kelas/Instansi:</label>
+                    <input type="text" id="userClass" name="userClass" class="w-full p-3 border border-gray-300 rounded-lg" required>
+                </div>
+                <button id="submitInfoBtn" type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                    Mulai Kuis
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Kuis Berlangsung (Tetap) -->
+    <div id="quizModal" class="hidden fixed inset-0 bg-white p-4 md:p-8 z-50 overflow-y-auto">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header Kuis -->
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl md:text-2xl font-bold text-amber-600">Kuis Cirebon</h2>
+                <div id="questionCounter" class="text-lg font-semibold text-gray-700">Soal 1 dari 20</div>
+            </div>
+            
+            <!-- Konten Soal -->
+            <div class="bg-amber-50 p-6 md:p-8 rounded-lg shadow-inner border border-amber-200">
+                <div id="questionText" class="text-lg md:text-xl font-medium text-gray-900 mb-6 min-h-[6rem]">
+                    Memuat soal...
+                </div>
+                <div id="optionsContainer" class="space-y-4">
+                    <!-- Opsi akan dimuat di sini oleh JavaScript -->
+                </div>
+            </div>
+
+            <!-- Navigasi Kuis -->
+            <div class="flex justify-between mt-8">
+                <button id="prevQuestionBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-8 rounded-lg shadow transition-transform transform hover:scale-105 hidden">
+                    Sebelumnya
+                </button>
+                <button id="nextQuestionBtn" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-lg shadow transition-transform transform hover:scale-105 ml-auto">
+                    Selanjutnya
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Hasil Kuis (Tetap) -->
+    <div id="resultModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-40">
+        <div class="w-full max-w-lg">
+            <!-- ID "resultCard" digunakan untuk tangkapan layar -->
+            <div id="resultCard" class="bg-white p-8 rounded-lg shadow-2xl text-center">
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">Kuis Selesai!</h2>
+                
+                <div class="mb-6">
+                    <div id="resultName" class="text-2xl font-semibold text-amber-600">Nama Pengguna</div>
+                    <div id="resultClass" class="text-lg text-gray-600">Kelas/Instansi</div>
+                </div>
+                
+                <div class="my-8">
+                    <div class="text-sm font-semibold text-gray-500 uppercase">SKOR AKHIR</div>
+                    <div id="resultScore" class="text-8xl font-extrabold text-gray-900">100</div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-3">
+                    <button id="downloadBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                        Unduh Hasil (PNG)
+                    </button>
+                    <button id="waBtn" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                        Kirim ke WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Rincian Linimasa (Struktur Tetap) -->
+    <div id="detailsModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50">
+        <div class="bg-white p-6 md:p-8 rounded-lg shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col">
+            <!-- Header Modal -->
+            <div class="flex justify-between items-center mb-4 flex-shrink-0">
+                <h2 id="detailsTitle" class="text-2xl font-bold text-gray-900">Rincian Babak</h2>
+                <button id="closeDetailsBtn" class="text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            </div>
+            <!-- Konten Scrollable -->
+            <div id="detailsContent" class="prose max-w-none overflow-y-auto text-gray-700">
+                <!-- Konten rincian akan dimuat di sini oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Konfirmasi Keluar Kuis (Tetap) -->
+    <div id="exitConfirmModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50">
+        <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md text-center">
+            <h2 class="text-2xl font-bold mb-4 text-red-600">Peringatan!</h2>
+            <p class="text-lg text-gray-700 mb-6">Anda keluar dari mode layar penuh. Sesi kuis akan dihentikan jika Anda melanjutkan. Yakin ingin keluar?</p>
+            <p class="text-sm text-gray-500 mb-6">Pilih "Kembali" dan segera masuk lagi ke mode layar penuh (F11 atau tombol di browser) untuk melanjutkan kuis.</p>
+            <div class="flex justify-between gap-4">
+                <button id="cancelExitBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg">
+                    Kembali
+                </button>
+                <button id="confirmExitBtn" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg">
+                    Ya, Keluar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // --- BANK DATA RINCIAN LINIMASA (BARU) ---
+    const timelineDetails = {
+        prolog: {
+            title: "Prolog: Tanah Para Pedagang",
+            content: `
+                <p>Jauh sebelum kata 'Cirebon' dikenal, pesisir utara Jawa Barat adalah jalur sutra bahari. Pelabuhan-pelabuhan kuno seperti Singapura (kini Mertasinga) dan Pasambangan (dekat Gunung Jati) adalah etalase dunia. Di sinilah kapal-kapal dari Tiongkok, Gujarat, Persia, dan Arab berlabuh, menukar keramik dan sutra dengan rempah-rempah dan terasi.</p>
+                <p>Wilayah ini berada di bawah kekuasaan Kerajaan Sunda Pajajaran, yang berpusat di pedalaman (Pakuan). Pajajaran adalah kerajaan Hindu-Buddha yang agung, namun cengkeramannya di pesisir mulai melemah seiring menguatnya denyut nadi Islam yang dibawa oleh para pedagang.</p>
+            `
+        },
+        babak1: {
+            title: "Babak I: Lahirnya Caruban Larang",
+            content: `
+                <p>Kisah ini dimulai dari sebuah pilihan. Pangeran Walangsungsang, putra mahkota dari Prabu Siliwangi (Raja Pajajaran), memilih jalan yang berbeda. Ia, bersama adiknya Rara Santang, meninggalkan kemegahan istana untuk mendalami ajaran baru: Islam.</p>
+                <p>Setelah berguru di berbagai tempat, ia tiba di desa nelayan kecil. Bersama istrinya, Nyi Indang Geulis (putri Ki Gedeng Tapa, penguasa Singapura), ia membabat hutan di wilayah Lemahwungkuk sekitar tahun 1445. Tempat itu ia namai 'Caruban', yang berarti 'Campuran', karena penduduknya terdiri dari berbagai suku dan agama (Jawa, Sunda, Tionghoa, Arab) yang hidup berdampingan.</p>
+                <p>Ia kemudian berguru pada Syekh Dzatuk Kahfi di Pasambangan. Setelah menunaikan ibadah haji, Pangeran Walangsungsang dikenal sebagai Haji Abdullah Iman dan diangkat menjadi Kuwu (Kepala Desa) Caruban. Ia membangun Tajug (Masjid) dan Keraton (Pakungwati) pertama. Inilah benih dari sebuah kesultanan besar.</p>
+            `
+        },
+        babak2: {
+            title: "Babak II: Sang Wali & Sang Raja (Sunan Gunung Jati)",
+            content: `
+                <p>Titik balik Cirebon tiba dengan kedatangan Syarif Hidayatullah, putra Rara Santang (adik Walangsungsang) yang lahir di Mesir. Ia adalah seorang ulama karismatik yang dikenal sebagai salah satu dari Wali Songo.</p>
+                <p>Sekitar tahun 1479, Walangsungsang (kini bergelar Pangeran Cakrabuana) menyerahkan kekuasaan kepada keponakannya itu. Syarif Hidayatullah kemudian menikahi Nyi Ratu Pakungwati, putri Cakrabuana, menyatukan dua garis keturunan.</p>
+                <p>Di bawah Syarif Hidayatullah, yang bergelar Sunan Gunung Jati, Cirebon bertransformasi. Ia bukan hanya pemimpin spiritual (Wali), tapi juga pemimpin politik (Raja/Sultan). Ia menggabungkan otoritas agama dan negara, sesuatu yang sangat langka.</p>
+                <p>Pada tahun 1482, Sunan Gunung Jati mengambil langkah paling berani: ia menghentikan pengiriman upeti (terasi dan garam) kepada kakeknya, Prabu Siliwangi di Pajajaran. Ini adalah proklamasi kemerdekaan. Cirebon resmi menjadi Kesultanan Islam merdeka pertama di Jawa Barat, dan menjadi pusat dakwah utama di tatar Sunda.</p>
+            `
+        },
+        babak3: {
+            title: "Babak III: Era Pasca Wali (Konsolidasi)",
+            content: `
+                <p>Sunan Gunung Jati wafat pada tahun 1568. Namun, ia telah meletakkan fondasi yang kokoh. Ia juga berhasil mengirim putranya, Sultan Hasanuddin, untuk mendirikan Kesultanan Banten. Cirebon dan Banten menjadi dua pilar Islam di barat Jawa.</p>
+                <p>Takhta Cirebon tidak jatuh ke putranya (yang wafat muda), tetapi ke cucunya, Pangeran Mas, yang kemudian bergelar Panembahan Ratu I. Ia memerintah sangat lama (1570-1649), hampir 80 tahun.</p>
+                <p>Era Panembahan Ratu I adalah era damai dan konsolidasi. Cirebon tidak lagi agresif berekspansi, melainkan fokus membangun kemakmuran dan menjaga keseimbangan. Di timur, Kesultanan Mataram di bawah Panembahan Senopati dan Sultan Agung mulai tumbuh menjadi raksasa baru. Cirebon harus pandai berdiplomasi di antara dua kekuatan besar: Banten di barat dan Mataram di timur.</p>
+            `
+        },
+        babak4: {
+            title: "Babak IV: Di Bawah Bayang-Bayang Mataram",
+            content: `
+                <p>Panembahan Ratu I wafat, digantikan oleh cucunya, Pangeran Karim, yang bergelar Panembahan Ratu II atau Pangeran Girilaya (1649-1677).</p>
+                <p>Ini adalah puncak kebudayaan Cirebon. Pada era inilah Kereta Singa Barong yang legendaris dibuat. Kereta ini adalah mahakarya filosofis: Belalainya (Gajah) melambangkan India (Hindu), Sayapnya (Buraq) melambangkan Arab (Islam), dan Kepalanya (Naga) melambangkan Tiongkok (Buddha). Ini adalah simbol sintesis budaya Cirebon yang paripurna.</p>
+                <p>Namun, secara politik, Cirebon melemah. Sultan Agung dari Mataram (yang telah menguasai hampir seluruh Jawa) menempatkan Cirebon sebagai 'vassal' atau negara bawahan. Cirebon dipaksa mengirim upeti dan mengakui kedaulatan Mataram, meskipun tetap memiliki otonomi internal.</p>
+            `
+        },
+        babak5: {
+            title: "Babak V: Tragedi dan Kekosongan Takhta",
+            content: `
+                <p>Musibah datang di era Amangkurat I, putra Sultan Agung yang paranoid dan kejam. Sekitar tahun 1677, Panembahan Girilaya diundang (atau lebih tepatnya, dipanggil paksa) ke ibukota Mataram di Plered.</p>
+                <p>Ini adalah jebakan. Pangeran Girilaya dan kedua putranya (Pangeran Martawijaya dan Pangeran Kertawijaya) ditahan di Mataram dan tidak diizinkan pulang. Girilaya akhirnya wafat dalam status sandera di Mataram.</p>
+                <p>Cirebon mengalami kekosongan kekuasaan (vacuum of power). Pada saat yang sama, Mataram dilanda perang besar: Pemberontakan Trunojoyo. Dalam kekacauan itu, Sultan Ageng Tirtayasa dari Banten (musuh Mataram) berhasil membebaskan kedua pangeran Cirebon dan membawa mereka ke Banten. Banten kini berniat mencaplok Cirebon.</p>
+            `
+        },
+        babak6: {
+            title: "Babak VI: Perjanjian & Perpecahan (Intervensi VOC)",
+            content: `
+                <p>Kedua Pangeran Cirebon kini berada dalam dilema: mereka tidak mau tunduk pada Banten, tetapi juga trauma pada Mataram. Di sinilah pihak ketiga masuk: VOC (Kumpeni Belanda).</p>
+                <p>VOC menawarkan "perlindungan". Dengan diantar oleh Kapten Tack, kedua pangeran kembali ke Cirebon. Pada tahun 1681, ditandatangani perjanjian yang menempatkan Cirebon sebagai protektorat VOC. Sebagai imbalan atas "perlindungan" dari Banten dan Mataram, VOC mendapat hak monopoli dagang (lada, candu, tekstil).</p>
+                <p>VOC tidak ingin Cirebon bersatu dan kuat. Dengan siasat 'Divide et Impera', VOC menobatkan kedua pangeran sekaligus, memecah Cirebon menjadi dua:</p>
+                <ul>
+                    <li>Pangeran Martawijaya menjadi <strong>Sultan Sepuh I (Keraton Kasepuhan)</strong>.</li>
+                    <li>Pangeran Kertawijaya menjadi <strong>Sultan Anom I (Keraton Kanoman)</strong>.</li>
+                </ul>
+                <p>Perpecahan ini berlanjut seabad kemudian dengan lahirnya Kacirebonan dan Kaprabonan. Kedaulatan politik Cirebon telah berakhir.</p>
+            `
+        },
+        epilog: {
+            title: "Epilog: Warisan Empat Takhta",
+            content: `
+                <p>Sejak 1681, Cirebon tidak lagi menjadi pemain utama dalam politik di Nusantara. Kekuasaannya terfragmentasi di antara empat keraton (Kasepuhan, Kanoman, Kacirebonan, Kaprabonan) yang saling mengawasi dan kini berada di bawah kendali kolonial.</p>
+                <p>Namun, runtuhnya kekuatan politik Cirebon justru melahirkan kekuatan budayanya. Keempat keraton menjadi 'penjaga api' tradisi. Mereka tidak lagi berperang dengan tombak, melainkan 'berperang' dalam kemegahan seni: tarian topeng, batik megamendung, gamelan, dan sastra.</p>
+                <p>Cirebon adalah bukti bahwa sebuah takhta bisa terbelah, namun warisan (sintesis budaya Sunda, Jawa, Tionghoa, dan Arab) tetap hidup abadi.</p>
+            `
+        }
+    };
+
+    // --- BANK SOAL (BARU - 25 SOAL CIREBON) ---
+    const quizData = [
+        // BAB I & II (PENDIRIAN & SUNAN GUNUNG JATI)
+        {
+            question: "Nama 'Caruban' (Campuran) yang diberikan oleh Pangeran Walangsungsang (c. 1445) memiliki makna historis yang penting karena....",
+            options: [
+                "A. Wilayah itu adalah tempat pencampuran air sungai dan air laut.",
+                "B. Ini merujuk pada campuran antara ajaran Islam dan Hindu-Buddha.",
+                "C. Ini mencerminkan realitas demografisnya sebagai titik temu berbagai etnis (Jawa, Sunda, Tionghoa, Arab) sejak awal.",
+                "D. Ini adalah nama dewi padi yang dipuja di wilayah tersebut.",
+                "E. Ini adalah strategi untuk menyamarkan identitasnya dari kejaran Pajajaran."
+            ],
+            correct: 2
+        },
+        {
+            question: "Peran ganda Sunan Gunung Jati sebagai 'Wali' (pemimpin spiritual) dan 'Raja/Sultan' (pemimpin politik) memiliki dampak strategis....",
+            options: [
+                "A. Menyebabkan kebingungan di antara rakyat siapa yang harus diikuti.",
+                "B. Melemahkan otoritas Wali Songo lainnya yang tidak menjadi raja.",
+                "C. Menggabungkan legitimasi spiritual dan politik, menjadikan Cirebon sebagai pusat dakwah yang memiliki kekuatan militer.",
+                "D. Memaksa Cirebon untuk fokus pada agama dan mengabaikan perdagangan.",
+                "E. Memicu perang saudara antara kubu ulama dan kubu bangsawan."
+            ],
+            correct: 2
+        },
+        {
+            question: "Tindakan Sunan Gunung Jati menghentikan upeti ke Pajajaran (1482) BUKAN sekadar pembangkangan ekonomi, melainkan....",
+            options: [
+                "A. Sebuah deklarasi kemerdekaan politik dan spiritual, menegaskan Cirebon sebagai entitas berdaulat yang setara.",
+                "B. Strategi untuk memancing perang agar bisa menaklukkan ibukota Pajajaran.",
+                "C. Hasil dari kegagalan panen terasi dan garam di Cirebon.",
+                "D. Perintah langsung dari Kesultanan Demak untuk melemahkan Pajajaran.",
+                "E. Kesepakatan damai dengan Prabu Siliwangi untuk membagi wilayah."
+            ],
+            correct: 0
+        },
+        {
+            question: "Posisi geopolitik Cirebon di perbatasan antara wilayah Sunda (Pajajaran) dan Jawa (Demak) mengakibatkan....",
+            options: [
+                "A. Cirebon terisolasi secara budaya dan ekonomi dari kedua wilayah.",
+                "B. Cirebon terus-menerus menjadi medan perang antara Demak dan Pajajaran.",
+                "C. Cirebon berkembang menjadi 'zona penyangga' (buffer zone) strategis dan pusat sintesis budaya (akulturasi) yang unik.",
+                "D. Cirebon dipaksa untuk memilih salah satu pihak, dan akhirnya memilih Demak.",
+                "E. Cirebon menolak kedua budaya tersebut dan mengembangkan budaya sendiri yang murni Arab."
+            ],
+            correct: 2
+        },
+        {
+            question: "Hubungan antara Pangeran Cakrabuana (Walangsungsang) dan Sunan Gunung Jati (Syarif Hidayatullah) paling tepat digambarkan sebagai....",
+            options: [
+                "A. Rival politik yang memperebutkan takhta Cirebon.",
+                "B. Guru (Cakrabuana) dan murid (Gunung Jati) dalam ilmu spiritual.",
+                "C. Paman yang mempersiapkan dan rela menyerahkan kekuasaan kepada keponakannya demi visi yang lebih besar (penyebaran Islam).",
+                "D. Ayah mertua yang terpaksa menyerahkan takhta karena kudeta Sunan Gunung Jati.",
+                "E. Sekutu militer yang bersama-sama menaklukkan Pajajaran."
+            ],
+            correct: 2
+        },
+        // BAB III & IV (KONSOLIDASI & MATARAM)
+        {
+            question: "Era Panembahan Ratu I (1570-1649) yang panjang dan damai, kontras dengan era ayahnya (Sunan Gunung Jati), menunjukkan pergeseran fokus Cirebon dari....",
+            options: [
+                "A. Perdagangan maritim ke fokus agraris penuh.",
+                "B. Ekspansi militer dan dakwah yang agresif, menjadi konsolidasi internal, diplomasi, dan pemeliharaan status quo.",
+                "C. Ketergantungan pada Demak menjadi aliansi penuh dengan Banten.",
+                "D. Budaya sinkretis menjadi penerapan Islam puritan (murni).",
+                "E. Pemerintahan Sultan (Raja) menjadi pemerintahan Dewan Wali (Ulama)."
+            ],
+            correct: 1
+        },
+        {
+            question: "Kereta Singa Barong (era Pangeran Girilaya) yang menggabungkan simbol Gajah (Hindu), Buraq (Islam), dan Naga (Buddha/Tionghoa) adalah artefak yang melambangkan....",
+            options: [
+                "A. Kekuatan militer Cirebon yang memiliki pasukan gajah, kavaleri, dan angkatan laut (naga).",
+                "B. Kebingungan agama di Cirebon yang tidak bisa memilih satu keyakinan.",
+                "C. Peringatan akan tiga ancaman utama Cirebon (India, Arab, dan Tiongkok).",
+                "D. Filosofi 'Caruban' (Campuran) dan kemampuan Cirebon dalam melakukan sintesis budaya secara harmonis sebagai jati dirinya.",
+                "E. Hadiah diplomatik dari tiga kerajaan tersebut kepada Cirebon."
+            ],
+            correct: 3
+        },
+        {
+            question: "Status Cirebon sebagai 'vassal' Mataram di bawah Sultan Agung (c. 1649) secara praktis berarti....",
+            options: [
+                "A. Cirebon dihapus dari peta dan menjadi provinsi biasa Mataram.",
+                "B. Cirebon harus membayar pajak, tunduk pada kebijakan luar negeri Mataram, namun tetap memiliki otonomi internal (raja sendiri).",
+                "C. Cirebon menjadi sekutu setara Mataram untuk melawan VOC dan Banten.",
+                "D. Raja Cirebon digantikan oleh gubernur yang ditunjuk oleh Mataram.",
+                "E. Cirebon harus mengirim semua hasil buminya ke Mataram tanpa imbalan."
+            ],
+            correct: 1
+        },
+        {
+            question: "Kebijakan Pangeran Girilaya (Panembahan Ratu II) yang menerima status vassal Mataram kemungkinan besar didasari oleh....",
+            options: [
+                "A. Pengkhianatan internal yang memaksanya tunduk.",
+                "B. Pragmatisme politik: menyadari bahwa kekuatan militer Mataram (Sultan Agung) terlalu besar untuk dilawan secara langsung.",
+                "C. Perintah dari Wali Songo untuk selalu berdamai dengan sesama kerajaan Islam.",
+                "D. Keinginan pribadi untuk mendapatkan perlindungan Mataram dari ancaman Banten.",
+                "E. Perjanjian lama yang dibuat oleh Sunan Gunung Jati."
+            ],
+            correct: 1
+        },
+        {
+            question: "Membandingkan Cirebon di era Panembahan Ratu I (damai) dan Panembahan Ratu II (vassal Mataram), perubahan paling signifikan adalah....",
+            options: [
+                "A. Hilangnya kemakmuran ekonomi Cirebon.",
+                "B. Hilangnya kedaulatan politik eksternal (independensi) Cirebon.",
+                "C. Perubahan agama resmi dari Islam ke Kejawen.",
+                "D. Perpindahan ibukota dari pesisir ke pedalaman.",
+                "E. Larangan total terhadap budaya Tionghoa dan Arab."
+            ],
+            correct: 1
+        },
+        // BAB V & VI (INTERVENSI & PERPECAHAN)
+        {
+            question: "Tragedi Girilaya (1677), di mana Sultan Cirebon wafat sebagai sandera Amangkurat I, adalah konsekuensi langsung dari....",
+            options: [
+                "A. Pemberontakan Cirebon yang gagal terhadap Mataram.",
+                "B. Status Cirebon sebagai vassal, yang membuat rajanya rentan terhadap intrik dan paranoia penguasa Mataram.",
+                "C. Aliansi Cirebon dengan Trunojoyo yang diketahui oleh Mataram.",
+                "D. Serangan mendadak VOC ke keraton Cirebon.",
+                "E. Wabah penyakit yang memaksa Sultan mengungsi ke Mataram."
+            ],
+            correct: 1
+        },
+        {
+            question: "Kekosongan kekuasaan (vacuum of power) di Cirebon setelah 1677 menjadi kritis karena....",
+            options: [
+                "A. Tidak ada lagi keturunan Sunan Gunung Jati yang tersisa.",
+                "B. Banten (Sultan Ageng Tirtayasa) dan VOC sama-sama melihat ini sebagai peluang untuk menanamkan pengaruh dan mengontrol pelabuhan Cirebon.",
+                "C. Pajajaran bangkit kembali dan mencoba merebut Cirebon.",
+                "D. Rakyat Cirebon memberontak dan ingin membentuk republik.",
+                "E. Seluruh keraton dan pusaka hancur dalam serangan Trunojoyo."
+            ],
+            correct: 1
+        },
+        {
+            question: "Peran Sultan Ageng Tirtayasa (Banten) dalam 'menyelamatkan' dua pangeran Cirebon dari Mataram didorong oleh motif....",
+            options: [
+                "A. Kemanusiaan murni untuk membantu kerabatnya.",
+                "B. Perintah dari VOC untuk mengamankan Cirebon.",
+                "C. Strategi untuk menjadikan Cirebon sebagai 'vassal' Banten, menggantikan pengaruh Mataram, dan memperkuat aliansinya melawan VOC.",
+                "D. Balas dendam pribadi kepada Amangkurat I, dengan Cirebon sebagai pionnya.",
+                "E. Kombinasi C dan D."
+            ],
+            correct: 4
+        },
+        {
+            question: "VOC (Kumpeni) akhirnya tampil sebagai 'pelindung' Cirebon pada 1681. Pilihan ini diambil oleh para pangeran Cirebon (Martawijaya & Kertawijaya) karena....",
+            options: [
+                "A. VOC adalah satu-satunya kekuatan yang mereka percayai.",
+                "B. VOC menawarkan 'jalan tengah': perlindungan dari ancaman Banten dan Mataram, meskipun dengan bayaran (monopoli).",
+                "C. VOC mengancam akan menghancurkan Cirebon jika tidak dilindungi.",
+                "D. VOC berjanji akan menyatukan kembali Cirebon dengan Banten.",
+                "E. Para pangeran telah dididik di Batavia dan pro-Belanda."
+            ],
+            correct: 1
+        },
+        {
+            question: "Perjanjian 1681 yang memecah Cirebon menjadi Kasepuhan dan Kanoman adalah puncak strategi 'Divide et Impera' VOC, yang bertujuan untuk....",
+            options: [
+                "A. Memastikan Cirebon tidak akan pernah bersatu dan cukup kuat untuk menantang monopoli dagang VOC.",
+                "B. Menciptakan pemerintahan yang adil dan merata bagi kedua pangeran.",
+                "C. Menghormati wasiat Panembahan Girilaya untuk membagi takhta.",
+                "D. Menyiapkan Cirebon untuk menjadi pusat pemerintahan VOC di Jawa.",
+                "E. Menghukum Kasepuhan dan memberi hadiah pada Kanoman."
+            ],
+            correct: 0
+        },
+        // PERBANDINGAN & KESELURUHAN (HOTS LANJUTAN)
+        {
+            question: "Menganalisis pendirian Demak (Raden Patah) dan Cirebon (Walangsungsang/SGJ), kesamaan utama keduanya adalah....",
+            options: [
+                "A. Keduanya didirikan oleh pangeran dari kerajaan Hindu (Majapahit/Pajajaran) yang memeluk Islam dan memerdekakan diri.",
+                "B. Keduanya adalah murni kerajaan agraris di pedalaman.",
+                "C. Keduanya didirikan atas perintah langsung dari Kekaisaran Ottoman.",
+                "D. Keduanya menolak total unsur budaya Tionghoa dan Arab.",
+                "E. Keduanya langsung bersekutu dengan Portugis untuk melawan kerajaan induknya."
+            ],
+            correct: 0
+        },
+        {
+            question: "Perbedaan fundamental antara nasib akhir Mataram (Perjanjian Giyanti 1755) dan Cirebon (Perjanjian 1681) adalah....",
+            options: [
+                "A. Mataram dipecah karena perang saudara internal yang masif (Mangkubumi), Cirebon dipecah VOC saat terjadi kekosongan kekuasaan.",
+                "B. Mataram dipecah menjadi dua, Cirebon tetap utuh.",
+                "C. Perpecahan Mataram murni urusan internal, perpecahan Cirebon murni karena VOC.",
+                "D. Cirebon berhasil bersatu kembali, Mataram tidak pernah.",
+                "E. Perpecahan Cirebon bersifat damai, perpecahan Mataram melalui perang besar."
+            ],
+            correct: 0
+        },
+        {
+            question: "Manakah pernyataan yang paling TEPAT merangkum warisan Kesultanan Cirebon (Epilog)?",
+            options: [
+                "A. Sebuah kerajaan maritim besar yang kekuatannya setara dengan Mataram dan Banten hingga akhir.",
+                "B. Sebuah kegagalan politik yang total karena tidak mampu melawan Mataram maupun VOC.",
+                "C. Sebuah kesultanan yang runtuh secara politik (terfragmentasi), namun berhasil melestarikan warisan budayanya sebagai pusat sintesis yang unik.",
+                "D. Sebuah pusat penyebaran Islam puritan (murni) yang menolak semua budaya lokal.",
+                "E. Sebuah pos dagang Tionghoa yang sukses dan kemudian mengadopsi budaya Jawa."
+            ],
+            correct: 2
+        },
+        {
+            question: "Jika Pangeran Girilaya (1677) menolak 'undangan' Amangkurat I dan memilih melawan Mataram, skenario yang paling MUNGKIN terjadi adalah....",
+            options: [
+                "A. Cirebon akan menang mudah karena Amangkurat I sedang sibuk oleh Trunojoyo.",
+                "B. Cirebon akan hancur total oleh serangan gabungan Mataram dan Banten.",
+                "C. Cirebon akan langsung meminta perlindungan VOC, mempercepat intervensi Belanda 4 tahun lebih awal.",
+                "D. Cirebon akan diserang Mataram, dan kekalahan Cirebon kemungkinan akan mempercepat jatuhnya sebagai vassal penuh atau kehancuran total.",
+                "E. Tidak ada yang berubah, Amangkurat I akan mengabaikannya."
+            ],
+            correct: 3
+        },
+        {
+            question: "Hubungan Cirebon dengan Banten paling tepat digambarkan sebagai....",
+            options: [
+                "A. Musuh bebuyutan sejak awal berdiri.",
+                "B. 'Induk' (Cirebon) dan 'Anak' (Banten, didirikan oleh putra SGJ), yang awalnya bersekutu namun kemudian menjadi rival regional.",
+                "C. Dua kerajaan yang tidak pernah berinteraksi satu sama lain.",
+                "D. Banten selalu menjadi bawahan setia Cirebon.",
+                "E. Cirebon adalah bawahan setia Banten."
+            ],
+            correct: 1
+        },
+        {
+            question: "Faktor utama yang memungkinkan Cirebon bertahan sebagai pusat budaya yang unik (sinkretis) bahkan setelah runtuh secara politik adalah....",
+            options: [
+                "A. Kekuatan militer keraton yang tersembunyi.",
+                "B. Lokasinya yang terisolasi di pedalaman.",
+                "C. Fondasi filosofis 'Caruban' (Campuran) yang sudah tertanam sejak awal oleh pendirinya.",
+                "D. Perintah langsung dari VOC untuk melestarikan budaya.",
+                "E. Kekayaan tambang emas yang melimpah."
+            ],
+            correct: 2
+        },
+        {
+            question: "Peran Syekh Dzatuk Kahfi bagi Pangeran Walangsungsang adalah sebagai....",
+            options: [
+                "A. Rival politik yang dikalahkan.",
+                "B. Komandan militer yang membantunya berperang.",
+                "C. Guru spiritual (Mursyid) yang membimbingnya dalam Islam dan memberinya visi.",
+                "D. Pedagang kaya yang mendanai pendirian Cirebon.",
+                "E. Arsitek yang merancang Keraton Pakungwati."
+            ],
+            correct: 2
+        },
+        {
+            question: "Alasan utama mengapa Cirebon tidak pernah menjadi imperium besar seperti Mataram (era Sultan Agung) adalah....",
+            options: [
+                "A. Cirebon tidak memiliki pelabuhan yang strategis.",
+                "B. Fokus Cirebon lebih pada dakwah dan perdagangan (soft power) daripada ekspansi militer teritorial (hard power).",
+                "C. Cirebon selalu kalah dalam teknologi persenjataan.",
+                "D. Para sultannya tidak memiliki legitimasi yang kuat.",
+                "E. Wilayah Cirebon tidak memiliki sumber daya alam yang cukup."
+            ],
+            correct: 1
+        },
+        {
+            question: "Dalam konteks sejarah Jawa, 'Tragedi Girilaya' (1677) sejajar dengan peristiwa....",
+            options: [
+                "A. Runtuhnya Keraton Plered (1677) akibat serangan Trunojoyo, keduanya menunjukkan rapuhnya kekuasaan Amangkurat I.",
+                "B. Kematian Sultan Trenggana (1546), yang memicu perebutan kekuasaan internal.",
+                "C. Perjanjian Giyanti (1755), yang memecah belah kerajaan.",
+                "D. Kegagalan Sultan Agung di Batavia (1629), yang menandai batas ekspansi.",
+                "E. Berdirinya Demak (c. 1500) sebagai kekuatan baru."
+            ],
+            correct: 0
+        },
+        {
+            question: "Warisan abadi Sunan Gunung Jati yang paling berdampak bagi sejarah Jawa Barat (khususnya Banten dan Cirebon) adalah....",
+            options: [
+                "A. Pembangunan jalan raya antara Cirebon dan Banten.",
+                "B. Pengenalan tanaman padi di wilayah pesisir.",
+                "C. Keberhasilannya mengislamkan hampir seluruh tatar Sunda dan mendirikan dua kesultanan (Cirebon & Banten) yang menjadi pilar Islam.",
+                "D. Penemuan teknik membatik Megamendung.",
+                "E. Aliansi militer permanen dengan Pajajaran."
+            ],
+            correct: 2
+        },
+    ];
+
+    // --- VARIABEL GLOBAL ---
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let selectedQuestions = [];
+    let selectedOption = null;
+    let userName = "";
+    let userClass = "";
+    let userAnswers = []; // <-- Variabel baru untuk menyimpan jawaban
+
+    // --- ELEMEN DOM ---
+    const startQuizBtn = document.getElementById('startQuizBtn');
+    const userInfoModal = document.getElementById('userInfoModal');
+    const userInfoForm = document.getElementById('userInfoForm');
+    const submitInfoBtn = document.getElementById('submitInfoBtn');
+    
+    const quizModal = document.getElementById('quizModal');
+    const questionCounter = document.getElementById('questionCounter');
+    const questionText = document.getElementById('questionText');
+    const optionsContainer = document.getElementById('optionsContainer');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const prevQuestionBtn = document.getElementById('prevQuestionBtn'); // <-- Elemen baru
+
+    const resultModal = document.getElementById('resultModal');
+    const resultCard = document.getElementById('resultCard'); // Untuk screenshot
+    const resultName = document.getElementById('resultName');
+    const resultClass = document.getElementById('resultClass');
+    const resultScore = document.getElementById('resultScore');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const waBtn = document.getElementById('waBtn');
+
+    // --- ELEMEN DOM (BARU) ---
+    const timelineWrapper = document.getElementById('timelineWrapper');
+    const detailsModal = document.getElementById('detailsModal');
+    const detailsTitle = document.getElementById('detailsTitle');
+    const detailsContent = document.getElementById('detailsContent');
+    const closeDetailsBtn = document.getElementById('closeDetailsBtn');
+
+    // --- ELEMEN DOM (BARU) ---
+    const exitConfirmModal = document.getElementById('exitConfirmModal');
+    const confirmExitBtn = document.getElementById('confirmExitBtn');
+    const cancelExitBtn = document.getElementById('cancelExitBtn');
+
+
+    // --- FUNGSI FULLSCREEN ---
+    const elem = document.documentElement;
+    function openFullscreen() {
+        // Fitur ini dibatasi oleh kebijakan izin di beberapa lingkungan (seperti iframe)
+        // console.log("Mencoba masuk mode layar penuh...");
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { // Firefox
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { // IE/Edge
+            elem.msRequestFullscreen();
+        }
+    }
+
+    function closeFullscreen() {
+        // console.log("Mencoba keluar dari mode layar penuh...");
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { // Firefox
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE/Edge
+            document.msExitFullscreen();
+        }
+    }
+
+    // --- FUNGSI KUIS UTAMA ---
+
+    // 1. Acak Soal
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    // 2. Tampilkan Modal Info
+    startQuizBtn.addEventListener('click', () => {
+        userInfoModal.classList.remove('hidden');
+    });
+
+    // 3. Submit Info & Mulai Kuis
+    userInfoForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Hapus pesan error sebelumnya jika ada
+        const oldError = document.getElementById('splitScreenError');
+        if (oldError) {
+            oldError.remove();
+        }
+
+        // --- LOGIKA SPLIT SCREEN BARU (BERBASIS RASIO) ---
+        
+        // Cek rasio tinggi dan lebar window terhadap layar
+        // Jika window lebih kecil dari 75% layar, anggap itu split/windowed
+        const heightRatio = window.innerHeight / window.screen.availHeight;
+        const widthRatio = window.innerWidth / window.screen.availWidth;
+        
+        // Kita anggap split jika salah satu rasio terlalu kecil
+        // (Misal: split vertikal di mobile akan punya widthRatio normal tapi heightRatio kecil)
+        const isSplit = (heightRatio < 0.75) || (widthRatio < 0.75);
+
+        // Cek jika browser sudah dalam mode fullscreen manual (F11)
+        const isAlreadyFullscreen = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+
+        // Jika mode windowed/split (rasio kecil) DAN tidak sedang fullscreen manual
+        if (isSplit && !isAlreadyFullscreen) {
+            // Tampilkan pesan error di dalam modal
+            const errorMsg = document.createElement('p');
+            errorMsg.id = "splitScreenError";
+            errorMsg.className = "text-red-600 text-sm font-bold text-center mt-4";
+            errorMsg.innerText = "Mode split screen atau window terdeteksi.\nHarap maksimalkan window browser Anda dan coba lagi.";
+            
+            // Sisipkan errorMsg setelah tombol submit
+            submitInfoBtn.insertAdjacentElement('afterend', errorMsg);
+            return; // Hentikan eksekusi
+        }
+        // --- AKHIR CEK ---
+
+        userName = document.getElementById('userName').value;
+        userClass = document.getElementById('userClass').value;
+        
+        if (userName.trim() && userClass.trim()) {
+            userInfoModal.classList.add('hidden');
+            
+            // Hapus error lagi saat berhasil (untuk pembersihan)
+            const errorElement = document.getElementById('splitScreenError');
+            if (errorElement) {
+                errorElement.remove();
+            }
+
+            startQuiz();
+        }
+    });
+
+    // 4. Logika Memulai Kuis
+    function startQuiz() {
+        // Reset state
+        currentQuestionIndex = 0;
+        score = 0;
+        selectedOption = null;
+        
+        // Hapus notifikasi force exit jika ada dari sesi sebelumnya
+        const oldNotification = document.getElementById('forceExitNotification');
+        if (oldNotification) {
+            oldNotification.remove();
+        }
+        
+        // Acak dan ambil 20 soal
+        selectedQuestions = shuffleArray([...quizData]).slice(0, 20);
+        userAnswers = new Array(selectedQuestions.length).fill(null); // <-- Inisialisasi array jawaban
+        
+        // Masuk fullscreen
+        openFullscreen(); // Mencoba masuk mode layar penuh
+        
+        // Tampilkan modal kuis
+        quizModal.classList.remove('hidden');
+        
+        // Muat soal pertama
+        loadQuestion();
+    }
+
+    // 5. Muat Soal
+    function loadQuestion() {
+        // Reset pilihan
+        selectedOption = userAnswers[currentQuestionIndex]; // <-- Muat jawaban yang tersimpan
+        
+        const question = selectedQuestions[currentQuestionIndex];
+        
+        questionCounter.innerText = `Soal ${currentQuestionIndex + 1} dari 20`;
+        questionText.innerText = question.question;
+        
+        optionsContainer.innerHTML = ""; // Kosongkan opsi sebelumnya
+        
+        question.options.forEach((option, index) => {
+            const optionElement = document.createElement('div');
+            optionElement.classList.add('quiz-option', 'p-4', 'border-2', 'border-gray-300', 'rounded-lg', 'cursor-pointer', 'text-gray-800');
+            optionElement.innerHTML = `${option}`; // <-- Menghapus duplikasi huruf
+            
+            optionElement.addEventListener('click', () => selectAnswer(optionElement, index));
+            
+            // Tampilkan jawaban yang sudah dipilih sebelumnya
+            if (index === selectedOption) {
+                optionElement.classList.add('selected', 'bg-amber-100', 'border-amber-500');
+            }
+            
+            optionsContainer.appendChild(optionElement);
+        });
+
+        // Update tombol
+        if (currentQuestionIndex === selectedQuestions.length - 1) {
+            nextQuestionBtn.innerText = "Selesai";
+        } else {
+            nextQuestionBtn.innerText = "Selanjutnya";
+        }
+        
+        // Tampilkan/sembunyikan tombol "Sebelumnya"
+        if (currentQuestionIndex === 0) {
+            prevQuestionBtn.classList.add('hidden');
+        } else {
+            prevQuestionBtn.classList.remove('hidden');
+        }
+    }
+
+    // 6. Pilih Jawaban
+    function selectAnswer(optionElement, index) {
+        // Hapus kelas 'selected' dari semua opsi
+        Array.from(optionsContainer.children).forEach(child => {
+            child.classList.remove('selected', 'bg-amber-100', 'border-amber-500');
+        });
+        
+        // Tambahkan kelas 'selected' ke yang diklik
+        optionElement.classList.add('selected', 'bg-amber-100', 'border-amber-500');
+        
+        // Simpan jawaban
+        selectedOption = index;
+        userAnswers[currentQuestionIndex] = index; // <-- Simpan jawaban ke array
+    }
+
+    // 7. Tombol Soal Selanjutnya
+    nextQuestionBtn.addEventListener('click', () => {
+        // Cek apakah jawaban sudah dipilih (opsional, bisa diaktifkan jika wajib diisi)
+        /*
+        if (userAnswers[currentQuestionIndex] === null) {
+            alert("Harap pilih jawaban sebelum melanjutkan.");
+            return; 
+        }
+        */
+
+        // Pindah ke soal berikutnya
+        if (currentQuestionIndex < selectedQuestions.length - 1) {
+            currentQuestionIndex++;
+            loadQuestion();
+        } else {
+            // Kuis selesai
+            showResults();
+        }
+    });
+    
+    // 7b. Tombol Soal Sebelumnya (BARU)
+    prevQuestionBtn.addEventListener('click', () => {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            loadQuestion();
+        }
+    });
+
+    // 8. Tampilkan Hasil
+    function showResults() {
+        // Keluar dari fullscreen
+        closeFullscreen(); // Mencoba keluar dari mode layar penuh
+        
+        // Sembunyikan modal kuis
+        quizModal.classList.add('hidden');
+        
+        // Hitung skor dari array jawaban
+        score = 0;
+        for (let i = 0; i < selectedQuestions.length; i++) {
+            if (userAnswers[i] === selectedQuestions[i].correct) {
+                score++;
+            }
+        }
+        
+        // Hitung skor akhir
+        const finalScore = Math.round((score / selectedQuestions.length) * 100);
+        
+        // Tampilkan data di modal hasil
+        resultName.innerText = userName;
+        resultClass.innerText = `Kelas: ${userClass}`;
+        resultScore.innerText = finalScore;
+        
+        // Tampilkan modal hasil
+        resultModal.classList.remove('hidden');
+    }
+
+    // --- FUNGSI TOMBOL HASIL ---
+
+    // 9. Unduh Hasil
+    downloadBtn.addEventListener('click', () => {
+        html2canvas(resultCard, { 
+            scale: 2, // Meningkatkan resolusi
+            useCORS: true 
+        }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = `hasil_kuis_cirebon_${userName.replace(/\s/g, '_')}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    });
+
+    // 10. Kirim Hasil ke WhatsApp
+    waBtn.addEventListener('click', () => {
+        const finalScore = resultScore.innerText;
+        const phoneNumber = "6285888892326"; // Nomor WA tujuan (placeholder)
+        
+        // Format pesan
+        const message = `Halo, saya telah menyelesaikan Kuis Sejarah Cirebon.
+Nama: ${userName}
+Kelas: ${userClass}
+Skor: ${finalScore}`;
+        
+        // Buat URL WhatsApp
+        const waUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+        
+        // Buka WhatsApp di tab baru
+        window.open(waUrl, '_blank');
+    });
+
+    // --- FUNGSI KONFIRMASI KELUAR FULLSCREEN (BARU) ---
+
+    // 11. Tombol "Ya, Keluar"
+    confirmExitBtn.addEventListener('click', () => {
+        // Sembunyikan modal konfirmasi
+        exitConfirmModal.classList.add('hidden');
+
+        // Tambahkan notifikasi di kartu hasil
+        const notification = document.createElement('p');
+        notification.id = "forceExitNotification"; // ID untuk hapus di sesi berikutnya
+        notification.className = "text-red-600 font-bold mb-4 text-lg";
+        notification.innerText = "Sesi dihentikan karena keluar dari layar penuh.";
+        
+        // Cek agar tidak duplikat
+        if (!document.getElementById('forceExitNotification')) {
+            resultCard.prepend(notification);
+        }
+
+        // Hentikan kuis dan tampilkan hasil
+        showResults();
+    });
+
+    // 12. Tombol "Kembali" (Batal Keluar)
+    cancelExitBtn.addEventListener('click', () => {
+        // Sembunyikan modal konfirmasi
+        exitConfirmModal.classList.add('hidden');
+        
+        // --- PERBAIKAN ---
+        // Tampilkan lagi modal kuisnya
+        quizModal.classList.remove('hidden');
+        // Dan coba masuk lagi ke mode fullscreen
+        openFullscreen();
+    });
+
+
+    // --- FUNGSI DETEKSI KELUAR FULLSCREEN ---
+    function handleFullscreenChange() {
+        const isFullscreen = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+        const isQuizActive = !quizModal.classList.contains('hidden');
+        const isResultVisible = !resultModal.classList.contains('hidden');
+
+        // Jika:
+        // 1. Tidak lagi dalam mode fullscreen (isFullscreen bernilai null)
+        // 2. Kuis sedang aktif (modal kuis terlihat)
+        // 3. Modal hasil BELUM terlihat (mencegah trigger ganda saat kuis selesai normal)
+        if (!isFullscreen && isQuizActive && !isResultVisible) {
+            
+            // Tampilkan modal konfirmasi.
+            exitConfirmModal.classList.remove('hidden');
+
+            // --- PERBAIKAN ---
+            // Sembunyikan juga kuisnya, agar tidak bisa dilanjutkan di background.
+            quizModal.classList.add('hidden');
+        }
+    }
+
+    // Daftarkan event listener untuk memantau perubahan fullscreen
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('msfullscreenchange', handleFullscreenChange);
+
+    // --- FUNGSI MODAL RINCIAN LINIMASA (BARU) ---
+
+    // Tampilkan modal saat kartu linimasa diklik
+    timelineWrapper.addEventListener('click', (e) => {
+        // Cari elemen '.timeline-card' terdekat dari elemen yang diklik
+        const card = e.target.closest('.timeline-card');
+        
+        if (!card) {
+            return; // Keluar jika yang diklik bukan bagian dari kartu
+        }
+
+        const target = card.dataset.target; // Ambil 'data-target' (cth: "prolog", "babak1")
+
+        if (target && timelineDetails[target]) {
+            const data = timelineDetails[target];
+            
+            // Isi konten modal
+            detailsTitle.innerText = data.title;
+            detailsContent.innerHTML = data.content;
+            
+            // Tampilkan modal
+            detailsModal.classList.remove('hidden');
+        }
+    });
+
+    // Fungsi untuk menutup modal rincian
+    function closeDetailsModal() {
+        detailsModal.classList.add('hidden');
+    }
+
+    // Tutup modal saat tombol 'x' diklik
+    closeDetailsBtn.addEventListener('click', closeDetailsModal);
+
+    // Tutup modal saat area di luar modal (latar belakang) diklik
+    detailsModal.addEventListener('click', (e) => {
+        if (e.target === detailsModal) {
+            closeDetailsModal();
+        }
+    });
+
+</script>
+
+</body>
+</html>
+
